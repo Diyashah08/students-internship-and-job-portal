@@ -37,6 +37,22 @@ const applicationSchema = new mongoose.Schema(
       enum: ['Applied', 'Under Review', 'Shortlisted', 'Interview', 'Selected', 'Rejected'],
       default: 'Applied',
     },
+    interviewDate: {
+      type: String,
+      default: '',
+    },
+    interviewTime: {
+      type: String,
+      default: '',
+    },
+    interviewLink: {
+      type: String,
+      default: '',
+    },
+    interviewNotes: {
+      type: String,
+      default: '',
+    },
     appliedAt: {
       type: Date,
       default: Date.now,

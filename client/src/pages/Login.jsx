@@ -64,21 +64,21 @@ const Login = () => {
 
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4 py-12 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 sm:p-10 rounded-3xl border border-slate-100 shadow-xl">
+      <div className="max-w-md w-full space-y-8 bg-white dark:bg-slate-900 p-8 sm:p-10 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-xl">
         {/* Header */}
         <div className="text-center">
-          <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md">
+          <div className="w-12 h-12 rounded-2xl bg-blue-600 text-white flex items-center justify-center mx-auto mb-3 shadow-md shadow-blue-500/20">
             <Briefcase className="w-6 h-6" />
           </div>
-          <h2 className="text-2xl font-extrabold text-slate-900">Welcome Back</h2>
-          <p className="text-xs text-slate-500 mt-1">
+          <h2 className="text-2xl font-extrabold text-slate-900 dark:text-white">Welcome Back</h2>
+          <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
             Log in to your InternConnect account to access opportunities
           </p>
         </div>
 
         {/* Demo Fast Logins Box */}
-        <div className="p-3.5 bg-blue-50/70 border border-blue-100 rounded-2xl">
-          <div className="flex items-center gap-1.5 text-xs font-bold text-blue-700 mb-2">
+        <div className="p-3.5 bg-blue-50/70 dark:bg-blue-950/40 border border-blue-100 dark:border-blue-900/60 rounded-2xl">
+          <div className="flex items-center gap-1.5 text-xs font-bold text-blue-700 dark:text-blue-400 mb-2">
             <Sparkles className="w-3.5 h-3.5" />
             Quick Demo Logins (1-Click Fill)
           </div>
@@ -86,32 +86,32 @@ const Login = () => {
             <button
               type="button"
               onClick={() => handleDemoFill('student@demo.com', 'password123')}
-              className="px-2 py-1.5 bg-white hover:bg-blue-600 hover:text-white rounded-xl text-[11px] font-bold text-slate-700 border border-slate-200 transition shadow-sm flex items-center justify-center gap-1"
+              className="px-2 py-1.5 bg-white dark:bg-slate-800 hover:bg-blue-600 dark:hover:bg-blue-600 hover:text-white dark:hover:text-white rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition shadow-xs flex items-center justify-center gap-1 cursor-pointer"
             >
-              <GraduationCap className="w-3 h-3" />
+              <GraduationCap className="w-3 h-3 text-blue-600 dark:text-blue-400" />
               Student
             </button>
             <button
               type="button"
               onClick={() => handleDemoFill('recruiter@demo.com', 'password123')}
-              className="px-2 py-1.5 bg-white hover:bg-indigo-600 hover:text-white rounded-xl text-[11px] font-bold text-slate-700 border border-slate-200 transition shadow-sm flex items-center justify-center gap-1"
+              className="px-2 py-1.5 bg-white dark:bg-slate-800 hover:bg-indigo-600 dark:hover:bg-indigo-600 hover:text-white dark:hover:text-white rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition shadow-xs flex items-center justify-center gap-1 cursor-pointer"
             >
-              <Building className="w-3 h-3" />
+              <Building className="w-3 h-3 text-indigo-600 dark:text-indigo-400" />
               Recruiter
             </button>
             <button
               type="button"
               onClick={() => handleDemoFill('admin@demo.com', 'admin123')}
-              className="px-2 py-1.5 bg-white hover:bg-emerald-600 hover:text-white rounded-xl text-[11px] font-bold text-slate-700 border border-slate-200 transition shadow-sm flex items-center justify-center gap-1"
+              className="px-2 py-1.5 bg-white dark:bg-slate-800 hover:bg-emerald-600 dark:hover:bg-emerald-600 hover:text-white dark:hover:text-white rounded-xl text-[11px] font-bold text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition shadow-xs flex items-center justify-center gap-1 cursor-pointer"
             >
-              <ShieldCheck className="w-3 h-3" />
+              <ShieldCheck className="w-3 h-3 text-emerald-600 dark:text-emerald-400" />
               Admin
             </button>
           </div>
         </div>
 
         {error && (
-          <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-xl text-xs text-rose-700 flex items-start gap-2">
+          <div className="p-3.5 bg-rose-50 dark:bg-rose-950/50 border border-rose-200 dark:border-rose-900/60 rounded-xl text-xs text-rose-700 dark:text-rose-300 flex items-start gap-2">
             <AlertCircle className="w-4 h-4 flex-shrink-0 mt-0.5" />
             <span>{error}</span>
           </div>
@@ -119,33 +119,33 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">
               Email Address
             </label>
             <div className="relative">
-              <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+              <Mail className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-3.5" />
               <input
                 type="email"
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="name@university.edu or company.com"
-                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white dark:focus:bg-slate-800"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-xs font-semibold text-slate-700 mb-1">Password</label>
+            <label className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1">Password</label>
             <div className="relative">
-              <Lock className="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" />
+              <Lock className="w-4 h-4 text-slate-400 dark:text-slate-500 absolute left-3.5 top-3.5" />
               <input
                 type="password"
                 required
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="••••••••"
-                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white"
+                className="w-full pl-10 pr-3.5 py-2.5 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white dark:focus:bg-slate-800"
               />
             </div>
           </div>
@@ -153,7 +153,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl transition shadow-md shadow-blue-500/20 disabled:opacity-50 flex items-center justify-center gap-2"
+            className="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm rounded-xl transition shadow-md shadow-blue-500/20 disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
           >
             {loading ? 'Authenticating...' : 'Sign In'}
             <ArrowRight className="w-4 h-4" />
@@ -161,9 +161,9 @@ const Login = () => {
         </form>
 
         <div className="text-center pt-2">
-          <p className="text-xs text-slate-500">
+          <p className="text-xs text-slate-500 dark:text-slate-400">
             Don't have an account yet?{' '}
-            <Link to="/register" className="font-bold text-blue-600 hover:underline">
+            <Link to="/register" className="font-bold text-blue-600 dark:text-blue-400 hover:underline">
               Register now
             </Link>
           </p>

@@ -14,6 +14,12 @@ import About from './pages/About';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import NotFound from './pages/NotFound';
+import ResumeAnalyzer from './pages/ResumeAnalyzer';
+import ResumeBuilder from './pages/ResumeBuilder';
+import InterviewPrep from './pages/InterviewPrep';
+import SalaryInsights from './pages/SalaryInsights';
+import CampusDrives from './pages/CampusDrives';
+import TPOAnalytics from './pages/TPOAnalytics';
 
 // Student Pages
 import StudentDashboard from './pages/student/StudentDashboard';
@@ -47,6 +53,12 @@ function App() {
         <Route path="/jobs/:id" element={<JobDetails />} />
         <Route path="/companies" element={<Companies />} />
         <Route path="/about" element={<About />} />
+        <Route path="/resume-builder" element={<ResumeBuilder />} />
+        <Route path="/resume-analyzer" element={<ResumeAnalyzer />} />
+        <Route path="/interview-prep" element={<InterviewPrep />} />
+        <Route path="/salary-insights" element={<SalaryInsights />} />
+        <Route path="/campus-drives" element={<CampusDrives />} />
+        <Route path="/tpo-analytics" element={<TPOAnalytics />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Route>

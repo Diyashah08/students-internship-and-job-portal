@@ -134,28 +134,28 @@ const StudentDashboard = () => {
       </div>
 
       {/* 3. Recent Applications Table */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-card">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 shadow-card">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Recent Applications</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Live status updates from hiring teams</p>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Recent Applications</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Live status updates from hiring teams</p>
           </div>
           <Link
             to="/student/applications"
-            className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1"
+            className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
           >
             View All Applications <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         {recentApplications.length === 0 ? (
-          <div className="text-center py-8 text-slate-400 text-xs">
+          <div className="text-center py-8 text-slate-400 dark:text-slate-500 text-xs">
             You have not applied to any opportunities yet.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="text-[11px] uppercase font-bold text-slate-400 bg-slate-50/80 border-y border-slate-100">
+              <thead className="text-[11px] uppercase font-bold text-slate-400 dark:text-slate-400 bg-slate-50/80 dark:bg-slate-800/80 border-y border-slate-100 dark:border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Opportunity</th>
                   <th className="py-3 px-4">Company</th>
@@ -164,23 +164,23 @@ const StudentDashboard = () => {
                   <th className="py-3 px-4 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                 {recentApplications.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-50/60 transition">
-                    <td className="py-3.5 px-4 font-semibold text-slate-900">
+                  <tr key={app._id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/50 transition">
+                    <td className="py-3.5 px-4 font-semibold text-slate-900 dark:text-white">
                       {app.jobId?.title || 'Job Listing'}
                     </td>
-                    <td className="py-3.5 px-4 text-slate-600 font-medium">
+                    <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300 font-medium">
                       {app.jobId?.companyId?.companyName || 'Company'}
                     </td>
-                    <td className="py-3.5 px-4 text-slate-500">{formatDate(app.appliedAt)}</td>
+                    <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400">{formatDate(app.appliedAt)}</td>
                     <td className="py-3.5 px-4">
                       <StatusBadge status={app.status} size="sm" />
                     </td>
                     <td className="py-3.5 px-4 text-right">
                       <Link
                         to={`/jobs/${app.jobId?._id}`}
-                        className="text-blue-600 hover:underline font-semibold"
+                        className="text-blue-600 dark:text-blue-400 hover:underline font-semibold"
                       >
                         View Job
                       </Link>
@@ -197,12 +197,12 @@ const StudentDashboard = () => {
       <div>
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Recommended For You</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Matched with your skills & courses</p>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Recommended For You</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Matched with your skills & courses</p>
           </div>
           <Link
             to="/jobs"
-            className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1"
+            className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
           >
             Explore All <ArrowRight className="w-3.5 h-3.5" />
           </Link>

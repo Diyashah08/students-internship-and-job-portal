@@ -147,7 +147,7 @@ exports.getJobApplications = async (req, res, next) => {
 // @access  Private (Recruiter / Admin)
 exports.updateApplicationStatus = async (req, res, next) => {
   try {
-    const { status } = req.body;
+    const { status, interviewDate, interviewTime, interviewLink, interviewNotes } = req.body;
     const validStatuses = ['Applied', 'Under Review', 'Shortlisted', 'Interview', 'Selected', 'Rejected'];
 
     if (!validStatuses.includes(status)) {
@@ -171,6 +171,10 @@ exports.updateApplicationStatus = async (req, res, next) => {
     }
 
     application.status = status;
+    if (interviewDate !== undefined) application.interviewDate = interviewDate;
+    if (interviewTime !== undefined) application.interviewTime = interviewTime;
+    if (interviewLink !== undefined) application.interviewLink = interviewLink;
+    if (interviewNotes !== undefined) application.interviewNotes = interviewNotes;
     await application.save();
 
     // Create Notification for the student
@@ -181,7 +185,7 @@ exports.updateApplicationStatus = async (req, res, next) => {
     if (status === 'Shortlisted') {
       messageText = `🎉 Congratulations! Your application for "${job?.title}" at ${companyName} has been shortlisted!`;
     } else if (status === 'Interview') {
-      messageText = `📅 Interview invitation! You have been scheduled for an interview for "${job?.title}" at ${companyName}. Check your email for details.`;
+      messageText = `📅 Interview Scheduled! Position: "${job?.title}" at ${companyName}. Date: ${interviewDate || 'Upcoming'} ${interviewTime ? 'at ' + interviewTime : ''}. Join link: ${interviewLink || 'Portal Notification'}`;
     } else if (status === 'Selected') {
       messageText = `🌟 Congratulations! You have been selected for the position of "${job?.title}" at ${companyName}!`;
     } else if (status === 'Rejected') {

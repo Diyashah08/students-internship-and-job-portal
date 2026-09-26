@@ -131,12 +131,12 @@ const AdminDashboard = () => {
       {/* 2 Column Section: Recent Users & Recent Jobs */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         {/* Recent Registrations */}
-        <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-card">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-100 dark:border-slate-800 shadow-card">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-base font-bold text-slate-900">Recent User Registrations</h2>
+            <h2 className="text-base font-bold text-slate-900 dark:text-white">Recent User Registrations</h2>
             <Link
               to="/admin/users"
-              className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
             >
               View All <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -146,20 +146,20 @@ const AdminDashboard = () => {
             {recentUsers.slice(0, 5).map((u) => (
               <div
                 key={u._id}
-                className="p-3 bg-slate-50/80 rounded-2xl flex items-center justify-between"
+                className="p-3 bg-slate-50/80 dark:bg-slate-800/60 rounded-2xl flex items-center justify-between"
               >
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900">{u.name}</h4>
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">{u.name}</h4>
                   <p className="text-[11px] text-slate-400">{u.email}</p>
                 </div>
                 <div className="text-right">
                   <span
                     className={`inline-block text-[10px] font-bold uppercase px-2 py-0.5 rounded ${
                       u.role === 'student'
-                        ? 'bg-blue-100 text-blue-700'
+                        ? 'bg-blue-100 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300'
                         : u.role === 'recruiter'
-                        ? 'bg-purple-100 text-purple-700'
-                        : 'bg-emerald-100 text-emerald-700'
+                        ? 'bg-purple-100 dark:bg-purple-950/60 text-purple-700 dark:text-purple-300'
+                        : 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300'
                     }`}
                   >
                     {u.role}
@@ -174,12 +174,12 @@ const AdminDashboard = () => {
         </div>
 
         {/* Recent Posted Opportunities */}
-        <div className="bg-white rounded-3xl p-6 border border-slate-100 shadow-card">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-100 dark:border-slate-800 shadow-card">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-base font-bold text-slate-900">Recent Postings</h2>
+            <h2 className="text-base font-bold text-slate-900 dark:text-white">Recent Postings</h2>
             <Link
               to="/admin/jobs"
-              className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
+              className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1"
             >
               Manage <ArrowRight className="w-3.5 h-3.5" />
             </Link>
@@ -189,11 +189,11 @@ const AdminDashboard = () => {
             {recentJobs.slice(0, 5).map((j) => (
               <div
                 key={j._id}
-                className="p-3 bg-slate-50/80 rounded-2xl flex items-center justify-between"
+                className="p-3 bg-slate-50/80 dark:bg-slate-800/60 rounded-2xl flex items-center justify-between"
               >
                 <div>
-                  <h4 className="text-xs font-bold text-slate-900">{j.title}</h4>
-                  <p className="text-[11px] text-slate-500">
+                  <h4 className="text-xs font-bold text-slate-900 dark:text-white">{j.title}</h4>
+                  <p className="text-[11px] text-slate-500 dark:text-slate-400">
                     {j.companyId?.companyName || 'Company'} • {j.type}
                   </p>
                 </div>

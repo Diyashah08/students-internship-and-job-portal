@@ -37,8 +37,8 @@ const SavedJobs = () => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900">Saved Opportunities</h1>
-        <p className="text-xs text-slate-500 mt-1">
+        <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">Saved Opportunities</h1>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
           Review your shortlisted internships and jobs and apply before the deadlines.
         </p>
       </div>

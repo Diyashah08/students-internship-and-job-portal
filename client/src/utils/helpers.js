@@ -37,3 +37,43 @@ export const getInitials = (name) => {
   if (parts.length === 1) return parts[0].charAt(0).toUpperCase();
   return (parts[0].charAt(0) + parts[parts.length - 1].charAt(0)).toUpperCase();
 };
+
+// Map company name to local high-res vector logo
+const KNOWN_COMPANY_LOGOS = {
+  flipkart: '/logos/flipkart.svg',
+  swiggy: '/logos/swiggy.svg',
+  tcs: '/logos/tcs.svg',
+  tata: '/logos/tcs.svg',
+  google: '/logos/google.svg',
+  microsoft: '/logos/microsoft.svg',
+  amazon: '/logos/amazon.svg',
+  zomato: '/logos/zomato.svg',
+  razorpay: '/logos/razorpay.svg',
+  infosys: '/logos/infosys.svg',
+  accenture: '/logos/accenture.svg',
+  wipro: '/logos/wipro.svg',
+  'tech mahindra': '/logos/techmahindra.svg',
+};
+
+export const getCompanyLogo = (logo, companyName = '') => {
+  const normalized = (companyName || '').toLowerCase();
+  
+  for (const [key, path] of Object.entries(KNOWN_COMPANY_LOGOS)) {
+    if (normalized.includes(key)) {
+      return path;
+    }
+  }
+
+  if (logo && typeof logo === 'string' && logo.trim()) {
+    // If it's a broken Wikimedia link that blocked hotlinking, use fallback
+    if (logo.includes('wikimedia.org') && (normalized.includes('flipkart') || normalized.includes('swiggy') || normalized.includes('tcs'))) {
+      if (normalized.includes('flipkart')) return '/logos/flipkart.svg';
+      if (normalized.includes('swiggy')) return '/logos/swiggy.svg';
+      if (normalized.includes('tcs') || normalized.includes('tata')) return '/logos/tcs.svg';
+    }
+    return logo;
+  }
+
+  return '/logos/flipkart.svg';
+};
+

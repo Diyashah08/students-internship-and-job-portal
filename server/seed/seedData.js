@@ -41,7 +41,7 @@ const seedDatabase = async () => {
       password: 'password123',
       role: 'recruiter',
       phone: '+91 9876543210',
-      about: 'Senior Campus Talent Acquisition Lead at Tech Mahindra & partner enterprises.',
+      about: 'Senior Campus Talent Acquisition Lead for Google, Amazon & Tech Startups ecosystem.',
     });
 
     const recruiter2 = await User.create({
@@ -50,7 +50,7 @@ const seedDatabase = async () => {
       password: 'password123',
       role: 'recruiter',
       phone: '+91 9876543211',
-      about: 'Head of University Hiring at TCS & Infosys ecosystem.',
+      about: 'Head of University Hiring at Microsoft, TCS & Infosys ecosystem.',
     });
 
     const student1 = await User.create({
@@ -89,60 +89,114 @@ const seedDatabase = async () => {
 
     console.log('👤 Created Users (Admin, Recruiters, Students).');
 
-    // 2. Create Companies
+    // 2. Create Companies with Authentic Corporate Profiles & Official Vector Logos
     const companiesData = [
       {
+        companyName: 'Google India',
+        logo: '/logos/google.svg',
+        description: 'Google LLC is a global technology leader organizing world information and making it universally accessible and useful. Google India leads engineering innovations across AI, Cloud, Android, and Search.',
+        website: 'https://careers.google.com',
+        location: 'RMZ Infinity, Old Madras Road, Bennigana Halli, Bengaluru, Karnataka 560016',
+        industry: 'Technology, AI & Cloud',
+        recruiterId: recruiter1._id,
+      },
+      {
+        companyName: 'Microsoft India',
+        logo: '/logos/microsoft.svg',
+        description: 'Microsoft India Development Center is one of Microsoft’s largest R&D centers outside Redmond, driving innovations in Azure Cloud, Windows, Office 365, and AI.',
+        website: 'https://careers.microsoft.com',
+        location: 'Microsoft Campus, ISB Road, Gachibowli, Hyderabad, Telangana 500032',
+        industry: 'Software, Cloud & Hardware',
+        recruiterId: recruiter2._id,
+      },
+      {
+        companyName: 'Amazon India',
+        logo: '/logos/amazon.svg',
+        description: 'Amazon is guided by four principles: customer obsession, passion for invention, commitment to operational excellence, and long-term thinking. Powers AWS and prime e-commerce across India.',
+        website: 'https://amazon.jobs',
+        location: 'Bagmane World Technology Center, Mahadevapura, Bengaluru, Karnataka 560048',
+        industry: 'E-Commerce & Cloud Computing (AWS)',
+        recruiterId: recruiter1._id,
+      },
+      {
+        companyName: 'Flipkart',
+        logo: '/logos/flipkart.svg',
+        description: 'Flipkart is India’s homegrown e-commerce marketplace leading customer-centric innovations in online retail, hyper-scale distributed systems, and supply chain technology.',
+        website: 'https://www.flipkartcareers.com',
+        location: 'Buildings Alyssa, Begonia & Clover, Embassy Tech Village, Outer Ring Road, Bengaluru, Karnataka 560103',
+        industry: 'E-Commerce & Supply Chain Tech',
+        recruiterId: recruiter1._id,
+      },
+      {
+        companyName: 'Swiggy',
+        logo: '/logos/swiggy.svg',
+        description: 'Swiggy is India’s leading on-demand convenience platform, delivering food, groceries via Instamart, and dining experiences powered by real-time logistics AI.',
+        website: 'https://careers.swiggy.com',
+        location: 'IBC Knowledge Park, Bannerghatta Main Road, Bhavani Nagar, Bengaluru, Karnataka 560029',
+        industry: 'Quick Commerce & On-Demand Delivery',
+        recruiterId: recruiter1._id,
+      },
+      {
+        companyName: 'Zomato',
+        logo: '/logos/zomato.svg',
+        description: 'Zomato connects customers, restaurant partners, and delivery partners serving millions of meals and rapid grocery delivery across 10,000+ cities in India.',
+        website: 'https://www.zomato.com/careers',
+        location: 'DLF Cyber City, Building 10, Phase II, Gurugram, Haryana 122002',
+        industry: 'Food Delivery & Hyperlocal Logistics',
+        recruiterId: recruiter1._id,
+      },
+      {
+        companyName: 'Razorpay',
+        logo: '/logos/razorpay.svg',
+        description: 'Razorpay is India’s leading full-stack financial solutions unicorn, revolutionizing digital payment gateways, neo-banking, and corporate credit cards for millions of businesses.',
+        website: 'https://razorpay.com',
+        location: 'The Pavillion, 175/1, Bannerghatta Main Road, Dollars Colony, Bengaluru, Karnataka 560076',
+        industry: 'Fintech & Banking Infrastructure',
+        recruiterId: recruiter1._id,
+      },
+      {
         companyName: 'Tata Consultancy Services (TCS)',
-        logo: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=150&auto=format&fit=crop&q=60',
-        description: 'TCS is a global leader in IT services, consulting, and business solutions with extensive presence worldwide.',
+        logo: '/logos/tcs.svg',
+        description: 'TCS is a global leader in IT services, consulting, and business solutions with extensive presence in over 50 countries, building tomorrow’s enterprise architecture.',
         website: 'https://www.tcs.com',
-        location: 'Mumbai, Maharashtra, India',
-        industry: 'Information Technology & Services',
+        location: 'TCS House, Raveline Street, Fort, Mumbai, Maharashtra 400001',
+        industry: 'Information Technology & Consulting',
         recruiterId: recruiter2._id,
       },
       {
         companyName: 'Infosys',
-        logo: 'https://images.unsplash.com/photo-1554469384-e58fac16e23a?w=150&auto=format&fit=crop&q=60',
+        logo: '/logos/infosys.svg',
         description: 'Infosys is a global leader in next-generation digital services and consulting, enabling clients across 50+ countries to navigate their digital transformation.',
         website: 'https://www.infosys.com',
-        location: 'Bengaluru, Karnataka, India',
-        industry: 'Information Technology',
+        location: 'Electronics City, Hosur Road, Bengaluru, Karnataka 560100',
+        industry: 'Information Technology & Cloud Consulting',
         recruiterId: recruiter2._id,
       },
       {
-        companyName: 'Wipro Technologies',
-        logo: 'https://images.unsplash.com/photo-1497366216548-37526070297c?w=150&auto=format&fit=crop&q=60',
-        description: 'Wipro is a leading technology services and consulting company focused on building innovative solutions that address clients’ most complex digital transformation needs.',
-        website: 'https://www.wipro.com',
-        location: 'Bengaluru, Karnataka, India',
-        industry: 'IT Services & Consulting',
-        recruiterId: recruiter1._id,
-      },
-      {
         companyName: 'Accenture India',
-        logo: 'https://images.unsplash.com/photo-1497215728101-856f4ea42174?w=150&auto=format&fit=crop&q=60',
-        description: 'Accenture is a global professional services company with leading capabilities in digital, cloud, security and software innovation.',
+        logo: '/logos/accenture.svg',
+        description: 'Accenture is a global professional services company with leading capabilities in digital, cloud, security, and generative artificial intelligence.',
         website: 'https://www.accenture.com',
-        location: 'Hyderabad, Telangana, India',
+        location: 'Divyasree Orion, Raidurga, HITEC City, Hyderabad, Telangana 500081',
         industry: 'Management & Technology Consulting',
         recruiterId: recruiter1._id,
       },
       {
-        companyName: 'Tech Mahindra',
-        logo: 'https://images.unsplash.com/photo-1577495508048-b635879837f1?w=150&auto=format&fit=crop&q=60',
-        description: 'Tech Mahindra offers innovative and customer-centric digital experiences, enabling enterprises, associates, and society to Rise.',
-        website: 'https://www.techmahindra.com',
-        location: 'Pune, Maharashtra, India',
-        industry: 'Telecommunications & IT',
+        companyName: 'Wipro Technologies',
+        logo: '/logos/wipro.svg',
+        description: 'Wipro is a leading technology services and consulting company focused on building innovative solutions that address clients’ most complex digital transformation needs.',
+        website: 'https://www.wipro.com',
+        location: 'Doddakannelli, Sarjapur Road, Bengaluru, Karnataka 560035',
+        industry: 'IT Services & Cloud Solutions',
         recruiterId: recruiter1._id,
       },
       {
-        companyName: 'Razorpay (Fintech Startup)',
-        logo: 'https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=150&auto=format&fit=crop&q=60',
-        description: 'Razorpay is India’s leading full-stack financial solutions company revolutionizing digital payments and banking for modern businesses.',
-        website: 'https://razorpay.com',
-        location: 'Bengaluru, Karnataka, India',
-        industry: 'Fintech & SaaS',
+        companyName: 'Tech Mahindra',
+        logo: '/logos/techmahindra.svg',
+        description: 'Tech Mahindra offers innovative and customer-centric digital experiences, enabling enterprises, associates, and society to Rise through connected technologies.',
+        website: 'https://www.techmahindra.com',
+        location: 'Sharda Centre, Off Karve Road, Erandwane, Pune, Maharashtra 411004',
+        industry: 'Telecommunications & Enterprise IT',
         recruiterId: recruiter1._id,
       },
     ];
@@ -150,22 +204,416 @@ const seedDatabase = async () => {
     const companies = await Company.insertMany(companiesData);
     console.log(`🏢 Created ${companies.length} Companies.`);
 
-    const tcs = companies[0];
-    const infosys = companies[1];
-    const wipro = companies[2];
-    const accenture = companies[3];
-    const techMahindra = companies[4];
-    const razorpay = companies[5];
+    const google = companies[0];
+    const microsoft = companies[1];
+    const amazon = companies[2];
+    const flipkart = companies[3];
+    const swiggy = companies[4];
+    const zomato = companies[5];
+    const razorpay = companies[6];
+    const tcs = companies[7];
+    const infosys = companies[8];
+    const accenture = companies[9];
+    const wipro = companies[10];
+    const techMahindra = companies[11];
 
     // 3. Create Sample Opportunities (Internships & Full-time Jobs)
     const thirtyDaysFromNow = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000);
     const fortyFiveDaysFromNow = new Date(Date.now() + 45 * 24 * 60 * 60 * 1000);
+    const sixtyDaysFromNow = new Date(Date.now() + 60 * 24 * 60 * 60 * 1000);
 
     const jobsData = [
+      // Google
+      {
+        title: 'Software Engineering Intern (Summer 2025/2026)',
+        description:
+          'Join Google as a Software Engineering Intern! You will work on core Google products and services that affect billions of users, collaborate with team leads, write clean testable code, and solve distributed systems challenges.',
+        type: 'Internship',
+        category: 'Software Engineering',
+        companyId: google._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        stipend: '₹1,25,000 / month',
+        duration: '3 Months',
+        experience: 'Pre-final Year (B.Tech / M.Tech / MS)',
+        skills: ['C++', 'Java', 'Python', 'Data Structures', 'Algorithms', 'Distributed Systems'],
+        eligibility: 'Currently pursuing a Bachelor’s or Master’s in Computer Science or related STEM field. Strong foundation in Algorithms.',
+        responsibilities: [
+          'Design and implement algorithms for scalable cloud microservices.',
+          'Optimize code for latency, throughput, and cross-platform reliability.',
+          'Participate in design reviews and submit high-standard pull requests.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'Associate Cloud Engineer (Fresher Graduate)',
+        description:
+          'As an Associate Cloud Engineer at Google Cloud, you will deploy enterprise cloud solutions, manage Google Cloud Platform (GCP) resources, and assist tier-1 clients in their modernization journeys.',
+        type: 'Full-time',
+        category: 'Cloud & DevOps',
+        companyId: google._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        salary: '₹20,00,000 / year',
+        experience: 'Fresher (0 - 1 Years)',
+        skills: ['Google Cloud (GCP)', 'Kubernetes', 'Linux', 'Python', 'Terraform', 'Networking'],
+        eligibility: 'B.Tech/B.E. in CS/IT/ECE (2024/2025 Batch) with GCP Associate Cloud Engineer certification or strong cloud coursework.',
+        responsibilities: [
+          'Deploy containerized applications on Google Kubernetes Engine (GKE).',
+          'Automate cloud infrastructure using Terraform scripts.',
+          'Monitor application performance and ensure 99.99% uptime compliance.',
+        ],
+        deadline: sixtyDaysFromNow,
+        status: 'Active',
+      },
+
+      // Microsoft
+      {
+        title: 'Software Development Engineer (SDE) Intern',
+        description:
+          'Microsoft is looking for brilliant problem solvers for our SDE Internship. You will build scalable cloud services in Azure, innovate on AI-powered developer tools, and collaborate with world-class engineers.',
+        type: 'Internship',
+        category: 'Software Engineering',
+        companyId: microsoft._id,
+        recruiterId: recruiter2._id,
+        location: 'Hyderabad, Telangana',
+        workMode: 'Hybrid',
+        stipend: '₹1,20,000 / month',
+        duration: '6 Months',
+        experience: 'College Student (Final / Pre-final Year)',
+        skills: ['C#', '.NET Core', 'Azure', 'Data Structures', 'Algorithms', 'Object Oriented Programming'],
+        eligibility: 'B.Tech/Dual Degree students graduating in 2025 or 2026 with minimum 7.5 CGPA.',
+        responsibilities: [
+          'Develop RESTful microservices on Microsoft Azure.',
+          'Write unit, integration, and load testing automation.',
+          'Contribute to sprint planning and agile feature delivery.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'Azure Support & Cloud Operations Engineer',
+        description:
+          'Work directly with Microsoft global enterprise customers to diagnose and resolve mission-critical cloud platform issues across hybrid cloud infrastructures.',
+        type: 'Full-time',
+        category: 'Cloud & DevOps',
+        companyId: microsoft._id,
+        recruiterId: recruiter2._id,
+        location: 'Hyderabad, Telangana',
+        workMode: 'Hybrid',
+        salary: '₹16,00,000 / year',
+        experience: 'Fresher (0 - 1 Years)',
+        skills: ['Microsoft Azure', 'PowerShell', 'Windows Server', 'Linux', 'Networking (TCP/IP)'],
+        eligibility: 'Graduating engineers with understanding of cloud systems, virtualization, and DNS/Networking.',
+        responsibilities: [
+          'Troubleshoot complex cloud networking and virtual machine issues.',
+          'Collaborate with Azure product engineering to triage platform bugs.',
+        ],
+        deadline: thirtyDaysFromNow,
+        status: 'Active',
+      },
+
+      // Amazon
+      {
+        title: 'Software Development Engineer Intern - AWS',
+        description:
+          'Amazon Web Services (AWS) is hiring SDE Interns to invent on behalf of millions of developers worldwide. You will dive deep into high-throughput systems, caching layers, and asynchronous event architectures.',
+        type: 'Internship',
+        category: 'Software Engineering',
+        companyId: amazon._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'On-site',
+        stipend: '₹1,10,000 / month',
+        duration: '6 Months',
+        experience: 'Pre-final Year Student',
+        skills: ['Java', 'AWS', 'Distributed Systems', 'SQL', 'Data Structures'],
+        eligibility: 'Enrolled in accredited B.Tech/M.Tech program in Computer Science or related degree.',
+        responsibilities: [
+          'Build customer-facing APIs and background workers on AWS Lambda and DynamoDB.',
+          'Participate in Amazon operational reviews and design discussions.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'Business Intelligence & Data Analyst Intern',
+        description:
+          'Help Amazon drive retail and operational excellence using data insights. You will query massive petabyte-scale data lakes, build executive dashboards in QuickSight, and model business forecasts.',
+        type: 'Internship',
+        category: 'Data & Analytics',
+        companyId: amazon._id,
+        recruiterId: recruiter1._id,
+        location: 'Hyderabad, Telangana',
+        workMode: 'Hybrid',
+        stipend: '₹65,000 / month',
+        duration: '6 Months',
+        experience: 'Final Year Student / Recent Graduate',
+        skills: ['SQL', 'Python', 'Tableau', 'Amazon QuickSight', 'Data Modeling', 'Excel'],
+        eligibility: 'B.Tech/BCA/B.Sc in Statistics, CS, or Analytics with advanced SQL skills.',
+        responsibilities: [
+          'Design automated ETL pipelines and KPI dashboards.',
+          'Extract actionable business trends for regional supply chain heads.',
+        ],
+        deadline: thirtyDaysFromNow,
+        status: 'Active',
+      },
+
+      // Flipkart
+      {
+        title: 'Associate SDE-1 (Full-Time Fresher)',
+        description:
+          'Flipkart is hiring ambitious freshers for the core engineering team. Build high-concurrency systems handling hundreds of thousands of checkout requests during the Big Billion Days sale.',
+        type: 'Full-time',
+        category: 'Software Engineering',
+        companyId: flipkart._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        salary: '₹22,00,000 / year',
+        experience: 'Fresher (2024 / 2025 Batch)',
+        skills: ['Java', 'Spring Boot', 'Kafka', 'MySQL', 'Redis', 'Microservices'],
+        eligibility: 'B.E./B.Tech in Computer Science or related field with solid grasp of CS fundamentals.',
+        responsibilities: [
+          'Develop fault-tolerant backend microservices with Java and Spring.',
+          'Optimize database queries and caching layers for sub-100ms response times.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'Associate Product Manager (APM) Intern',
+        description:
+          'Shape the future of Indian e-commerce. Work alongside senior product managers to define feature specs, run A/B experiments, and enhance the customer purchasing journey.',
+        type: 'Internship',
+        category: 'Product Management',
+        companyId: flipkart._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        stipend: '₹85,000 / month',
+        duration: '6 Months',
+        experience: 'College Student (All Branches)',
+        skills: ['Product Thinking', 'User Research', 'Wireframing', 'SQL', 'A/B Testing'],
+        eligibility: 'Undergraduate or Master’s students with strong analytical skills and consumer empathy.',
+        responsibilities: [
+          'Conduct user interviews to synthesize product pain points.',
+          'Write PRDs and partner with engineering to launch experiments.',
+        ],
+        deadline: thirtyDaysFromNow,
+        status: 'Active',
+      },
+
+      // Swiggy
+      {
+        title: 'Frontend Engineering Intern (React & Mobile Web)',
+        description:
+          'Build lightning-fast web interfaces for millions of Swiggy foodies and Instamart shoppers. Master React, state synchronization, and modern web performance optimizations.',
+        type: 'Internship',
+        category: 'Web Development',
+        companyId: swiggy._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        stipend: '₹50,000 / month',
+        duration: '6 Months',
+        experience: 'Fresher / Student',
+        skills: ['React.js', 'JavaScript (ES6+)', 'Tailwind CSS', 'Redux Toolkit', 'REST APIs'],
+        eligibility: 'B.Tech/BCA/MCA with demonstrable web projects and responsive UI portfolio.',
+        responsibilities: [
+          'Build pixel-perfect UI components adhering to Swiggy design system.',
+          'Optimize asset delivery for ultra-fast rendering on mobile networks.',
+        ],
+        deadline: thirtyDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'UI/UX Product Design Intern',
+        description:
+          'Craft delightful consumer experiences for food ordering and groceries. Create wireframes, interactive prototypes, and design systems for mobile and web apps.',
+        type: 'Internship',
+        category: 'UI/UX Design',
+        companyId: swiggy._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        stipend: '₹40,000 / month',
+        duration: '3 Months',
+        experience: 'Design Student / Fresher',
+        skills: ['Figma', 'Prototyping', 'User Research', 'Design Systems', 'Mobile UX'],
+        eligibility: 'Design portfolio displaying mobile app case studies is mandatory.',
+        responsibilities: [
+          'Design interactive prototypes and mockups in Figma.',
+          'Collaborate with developers to ensure fidelity in final production.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
+
+      // Zomato
+      {
+        title: 'Backend Developer Intern (Golang / Python)',
+        description:
+          'Work on high-performance order routing engines and real-time rider dispatch algorithms at Zomato. Ideal for coders passionate about concurrency and backend performance.',
+        type: 'Internship',
+        category: 'Backend Development',
+        companyId: zomato._id,
+        recruiterId: recruiter1._id,
+        location: 'Gurugram, Haryana',
+        workMode: 'On-site',
+        stipend: '₹60,000 / month',
+        duration: '6 Months',
+        experience: 'College Student (Pre-final / Final Year)',
+        skills: ['Golang', 'Python', 'PostgreSQL', 'Redis', 'Docker', 'REST APIs'],
+        eligibility: 'B.Tech in CS/IT. Solid understanding of multi-threading and relational databases.',
+        responsibilities: [
+          'Develop microservices handling real-time order lifecycle events.',
+          'Write automated tests and monitor latency metrics via Grafana.',
+        ],
+        deadline: thirtyDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'Operations & City Growth Associate',
+        description:
+          'Drive hyperlocal restaurant acquisition, onboarding, and customer retention strategies across key regional markets.',
+        type: 'Full-time',
+        category: 'Marketing & Sales',
+        companyId: zomato._id,
+        recruiterId: recruiter1._id,
+        location: 'Mumbai, Maharashtra',
+        workMode: 'On-site',
+        salary: '₹7,50,000 / year',
+        experience: 'Fresher (0 - 1 Years)',
+        skills: ['Business Strategy', 'Stakeholder Management', 'Excel', 'Data Analysis'],
+        eligibility: 'BBA / B.Tech / B.Com graduates with exceptional communication and negotiation skills.',
+        responsibilities: [
+          'Partner with premium restaurant chains for exclusive launch campaigns.',
+          'Analyze regional delivery demand patterns to optimize operational coverage.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
+
+      // Razorpay
+      {
+        title: 'Full Stack Engineering Intern (MERN / TypeScript)',
+        description:
+          'Contribute to Razorpay payment gateway dashboards, automated billing systems, and developer checkout SDKs used by millions of merchants daily.',
+        type: 'Internship',
+        category: 'Full Stack Development',
+        companyId: razorpay._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        stipend: '₹45,000 / month',
+        duration: '6 Months',
+        experience: 'College Student',
+        skills: ['React.js', 'Node.js', 'TypeScript', 'PostgreSQL', 'Docker', 'REST APIs'],
+        eligibility: 'Pre-final and final year students with hands-on MERN or full-stack web development projects.',
+        responsibilities: [
+          'Develop responsive merchant dashboard modules using React and TypeScript.',
+          'Build secure backend endpoints for payment settlement reconciliation.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'Junior DevOps Engineer (Fresher)',
+        description:
+          'Help build automated CI/CD pipelines, container orchestration environments, and security monitoring setups for critical financial infrastructures.',
+        type: 'Full-time',
+        category: 'Cloud & DevOps',
+        companyId: razorpay._id,
+        recruiterId: recruiter1._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        salary: '₹12,00,000 / year',
+        experience: 'Fresher (0 - 1 Years)',
+        skills: ['Docker', 'Kubernetes', 'AWS', 'Linux', 'CI/CD (GitHub Actions)', 'Terraform'],
+        eligibility: 'B.Tech graduates with strong Linux command line skills and containerization knowledge.',
+        responsibilities: [
+          'Maintain Kubernetes clusters across multi-region cloud infrastructures.',
+          'Automate deployment pipelines and manage zero-downtime releases.',
+        ],
+        deadline: thirtyDaysFromNow,
+        status: 'Active',
+      },
+
+      // TCS
+      {
+        title: 'TCS Digital Ninja Graduate Trainee',
+        description:
+          'TCS Digital is our flagship recruitment stream for high-potential engineering graduates. Work on cutting-edge enterprise projects in AI, IoT, Blockchain, and Full-Stack Engineering.',
+        type: 'Full-time',
+        category: 'Software Engineering',
+        companyId: tcs._id,
+        recruiterId: recruiter2._id,
+        location: 'Mumbai, Maharashtra',
+        workMode: 'Hybrid',
+        salary: '₹7,20,000 / year',
+        experience: 'Fresher (2024 / 2025 Batch)',
+        skills: ['Java', 'Python', 'SQL', 'Data Structures', 'Spring Boot', 'Git'],
+        eligibility: 'B.E./B.Tech/M.E./M.Tech/MCA/M.Sc with minimum 70% throughout academics.',
+        responsibilities: [
+          'Design and code enterprise software solutions for global banking and retail clients.',
+          'Participate in agile sprint ceremonies and continuous code quality audits.',
+        ],
+        deadline: sixtyDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'TCS Research & Innovation Intern - AI/NLP',
+        description:
+          'Join TCS Innovation Labs to conduct research in natural language processing, computer vision, and cognitive systems.',
+        type: 'Internship',
+        category: 'AI & Data Science',
+        companyId: tcs._id,
+        recruiterId: recruiter2._id,
+        location: 'Pune, Maharashtra',
+        workMode: 'Hybrid',
+        stipend: '₹35,000 / month',
+        duration: '6 Months',
+        experience: 'M.Tech / Pre-final B.Tech',
+        skills: ['Python', 'Natural Language Processing', 'PyTorch', 'Transformers', 'Machine Learning'],
+        eligibility: 'Students with publication track record or strong academic coursework in ML/NLP.',
+        responsibilities: [
+          'Train and fine-tune large language models for domain-specific industrial tasks.',
+          'Co-author research papers and patent disclosures.',
+        ],
+        deadline: thirtyDaysFromNow,
+        status: 'Active',
+      },
+
+      // Infosys
+      {
+        title: 'Specialist Programmer (Power Programmer)',
+        description:
+          'Infosys Specialist Programmer role is an elite high-compensation track designed for exceptional coders and algorithm masters. Lead digital transformation projects for Fortune 500 enterprises.',
+        type: 'Full-time',
+        category: 'Software Engineering',
+        companyId: infosys._id,
+        recruiterId: recruiter2._id,
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        salary: '₹9,50,000 / year',
+        experience: 'Fresher (2024 / 2025 Batch)',
+        skills: ['Competitive Programming', 'Java / C++', 'Data Structures', 'Algorithms', 'Cloud'],
+        eligibility: 'Outstanding coding performance in HackWithInfy or strong competitive programming rating.',
+        responsibilities: [
+          'Develop polyglot microservices architectures.',
+          'Architect resilient and scalable enterprise applications on public cloud.',
+        ],
+        deadline: fortyFiveDaysFromNow,
+        status: 'Active',
+      },
       {
         title: 'React.js Frontend Developer Intern',
         description:
-          'We are looking for enthusiastic React.js interns to build dynamic, mobile-responsive web applications. You will work closely with senior engineers on real-world client dashboards and product portals.',
+          'Build dynamic, accessible, and high-performance customer portals and internal tools using modern React, Tailwind, and REST APIs.',
         type: 'Internship',
         category: 'Web Development',
         companyId: infosys._id,
@@ -174,221 +622,103 @@ const seedDatabase = async () => {
         workMode: 'Hybrid',
         stipend: '₹25,000 / month',
         duration: '6 Months',
-        experience: 'Fresher / College Student',
+        experience: 'College Student (Final / Pre-final Year)',
         skills: ['React.js', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Git'],
         eligibility: 'B.Tech / BCA / MCA / B.Sc (2024 / 2025 / 2026 Batch) with minimum 60% aggregate.',
         responsibilities: [
-          'Develop interactive and responsive UI components using React.js and modern JavaScript.',
-          'Collaborate with backend developers to integrate RESTful APIs and ensure seamless data flow.',
-          'Participate in code reviews, debug front-end issues, and optimize web performance.',
-          'Write clean, maintainable, and reusable modular code.',
-        ],
-        requirements: [
-          'Strong fundamentals in HTML, CSS, JavaScript (ES6+), and React hooks.',
-          'Familiarity with state management libraries (Redux or Context API) is a plus.',
-          'Understanding of REST APIs and Git version control.',
-          'Good communication skills and eagerness to learn new web technologies.',
+          'Develop reusable component libraries in React.js.',
+          'Integrate REST APIs and manage application state.',
         ],
         deadline: thirtyDaysFromNow,
         status: 'Active',
       },
+
+      // Accenture
       {
-        title: 'Full Stack Developer Intern (MERN)',
+        title: 'Associate Software Engineer (ASE - Graduate Trainee)',
         description:
-          'Join our agile engineering team as a Full Stack MERN intern. Gain hands-on experience building end-to-end cloud applications using MongoDB, Express, React, and Node.js.',
+          'Accenture is hiring Associate Software Engineers. You will design, develop, and maintain software programs across Cloud, Security, SAP, and Modern Web architectures.',
+        type: 'Full-time',
+        category: 'Software Engineering',
+        companyId: accenture._id,
+        recruiterId: recruiter1._id,
+        location: 'Hyderabad, Telangana',
+        workMode: 'Hybrid',
+        salary: '₹4,80,000 / year',
+        experience: 'Fresher (2024 / 2025 Batch)',
+        skills: ['Java', 'C++', 'Python', 'SQL', 'Cloud Fundamentals', 'Agile'],
+        eligibility: 'B.E./B.Tech/MCA/M.Sc all branches with 65% or 6.5 CGPA and no active backlogs.',
+        responsibilities: [
+          'Collaborate in cross-functional agile teams to deliver client digital solutions.',
+          'Write modular code, perform unit testing, and resolve software defects.',
+        ],
+        deadline: sixtyDaysFromNow,
+        status: 'Active',
+      },
+      {
+        title: 'Generative AI & Data Analytics Intern',
+        description:
+          'Explore real-world enterprise implementations of Generative AI, RAG pipelines, and automated intelligence at Accenture Innovation Center.',
         type: 'Internship',
-        category: 'Software Development',
-        companyId: tcs._id,
-        recruiterId: recruiter2._id,
-        location: 'Remote / Virtual',
-        workMode: 'Remote',
+        category: 'AI & Data Science',
+        companyId: accenture._id,
+        recruiterId: recruiter1._id,
+        location: 'Delhi NCR',
+        workMode: 'Hybrid',
         stipend: '₹30,000 / month',
         duration: '6 Months',
-        experience: 'Fresher / Pre-final Year',
-        skills: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'REST API', 'JavaScript'],
-        eligibility: 'Engineering/CS/IT students currently in 3rd or 4th year with hands-on MERN project experience.',
+        experience: 'Pre-final / Final Year Student',
+        skills: ['Generative AI', 'Python', 'LangChain', 'OpenAI APIs', 'Vector Databases', 'Pandas'],
+        eligibility: 'Engineering students with solid grasp of Python and practical projects in LLMs/NLP.',
         responsibilities: [
-          'Build scalable backend services and REST APIs with Node.js and Express.',
-          'Design MongoDB schemas and write performant queries with Mongoose.',
-          'Connect React frontend with backend endpoints and manage application state.',
-          'Deploy applications to cloud platforms and write unit tests.',
-        ],
-        requirements: [
-          'Proven project experience with Node.js and React.js.',
-          'Good knowledge of asynchronous programming, promises, and JWT authentication.',
-          'Comfortable working with Git and GitHub.',
-          'High problem-solving aptitude.',
+          'Build proof-of-concept AI agents using LangChain and Vector databases.',
+          'Evaluate prompt performance and model safety guardrails.',
         ],
         deadline: fortyFiveDaysFromNow,
         status: 'Active',
       },
+
+      // Wipro
       {
-        title: 'Python Developer Intern',
+        title: 'Wipro Elite Graduate Trainee Engineer',
         description:
-          'Exciting internship opportunity for students skilled in Python. You will work on automation scripts, data pipelines, backend APIs, and internal productivity tools.',
-        type: 'Internship',
-        category: 'Data Science & AI',
+          'Join Wipro Elite National Talent Hunt. As a Project Engineer, you will undergo rigorous corporate technical training before being mapped to global digital accounts.',
+        type: 'Full-time',
+        category: 'Software Engineering',
         companyId: wipro._id,
         recruiterId: recruiter1._id,
-        location: 'Hyderabad, Telangana',
-        workMode: 'On-site',
-        stipend: '₹22,000 / month',
-        duration: '3 Months',
-        experience: 'Fresher',
-        skills: ['Python', 'Django', 'FastAPI', 'SQL', 'Git', 'Linux'],
-        eligibility: 'Any graduate/post-graduate in Computer Science, IT, or Mathematics.',
+        location: 'Bengaluru, Karnataka',
+        workMode: 'Hybrid',
+        salary: '₹4,20,000 / year',
+        experience: 'Fresher (2024 / 2025 Batch)',
+        skills: ['Python', 'Java', 'SQL', 'Operating Systems', 'Networking'],
+        eligibility: 'B.E./B.Tech/5-year Integrated-M.Tech with 60% or 6.0 CGPA throughout 10th, 12th, and graduation.',
         responsibilities: [
-          'Write clean and efficient Python code for automation workflows.',
-          'Assist in building REST APIs using Flask/FastAPI.',
-          'Query relational databases and write optimized SQL queries.',
-          'Test and debug Python applications.',
+          'Develop software components following engineering best practices.',
+          'Automate testing protocols and maintain technical documentation.',
         ],
-        requirements: [
-          'Solid understanding of core Python and Object-Oriented Programming (OOP).',
-          'Knowledge of basic SQL and database design.',
-          'Ability to write test cases and debug code.',
-          'Strong analytical thinking and teamwork spirit.',
-        ],
-        deadline: thirtyDaysFromNow,
+        deadline: sixtyDaysFromNow,
         status: 'Active',
       },
+
+      // Tech Mahindra
       {
-        title: 'Java Developer Intern',
+        title: 'Graduate Engineer Trainee - 5G & Telecom Software',
         description:
-          'Learn enterprise software engineering by working on Spring Boot microservices, cloud deployments, and resilient transactional systems with our global consulting team.',
-        type: 'Internship',
-        category: 'Software Development',
-        companyId: accenture._id,
+          'Work on next-generation telecom software, network automation, and cloud-native 5G systems for major global telecom operators.',
+        type: 'Full-time',
+        category: 'Software Engineering',
+        companyId: techMahindra._id,
         recruiterId: recruiter1._id,
         location: 'Pune, Maharashtra',
         workMode: 'Hybrid',
-        stipend: '₹28,000 / month',
-        duration: '6 Months',
-        experience: 'Fresher',
-        skills: ['Java', 'Spring Boot', 'MySQL', 'Hibernate', 'Microservices', 'Git'],
-        eligibility: 'B.Tech/B.E. Computer Science or Information Technology with good academic track record.',
+        salary: '₹5,00,000 / year',
+        experience: 'Fresher (2024 / 2025 Batch)',
+        skills: ['C++', 'Linux', 'Networking Protocols', 'Python', 'Telecom Domain'],
+        eligibility: 'B.Tech in CS/IT/ECE/EEE with minimum 65% aggregate.',
         responsibilities: [
-          'Develop Java backend services using Spring Boot framework.',
-          'Work with MySQL/PostgreSQL databases using Spring Data JPA.',
-          'Participate in daily standups and agile sprint planning sessions.',
-          'Implement unit tests with JUnit and Mockito.',
-        ],
-        requirements: [
-          'Strong knowledge of Core Java, Collections, Multithreading, and OOP.',
-          'Basic understanding of Spring Boot framework and REST APIs.',
-          'Familiarity with relational databases and SQL.',
-        ],
-        deadline: thirtyDaysFromNow,
-        status: 'Active',
-      },
-      {
-        title: 'UI/UX Design Intern',
-        description:
-          'Passionate about crafting intuitive user experiences? Join Razorpay’s design studio to design delightful fintech interfaces, design systems, wireframes, and prototypes.',
-        type: 'Internship',
-        category: 'UI/UX Design',
-        companyId: razorpay._id,
-        recruiterId: recruiter1._id,
-        location: 'Bengaluru / Remote',
-        workMode: 'Remote',
-        stipend: '₹35,000 / month',
-        duration: '3 Months',
-        experience: 'Fresher / Portfolio required',
-        skills: ['Figma', 'User Research', 'Wireframing', 'Prototyping', 'Design Systems', 'Adobe XD'],
-        eligibility: 'Design students or tech students with a demonstrable design portfolio (Behance/Dribbble/Figma).',
-        responsibilities: [
-          'Design user journeys, wireframes, and high-fidelity mockups for web and mobile.',
-          'Conduct usability testing sessions and synthesize customer feedback.',
-          'Maintain and contribute components to our centralized design system.',
-          'Collaborate directly with product managers and frontend engineers.',
-        ],
-        requirements: [
-          'Proficiency with Figma and modern design tooling.',
-          'Strong eye for typography, layout, spacing, and micro-interactions.',
-          'Portfolio showcasing at least 2 detailed UI/UX case studies.',
-          'Clear communication and presentation skills.',
-        ],
-        deadline: fortyFiveDaysFromNow,
-        status: 'Active',
-      },
-      {
-        title: 'Software Developer (Fresh Graduate)',
-        description:
-          'Tech Mahindra is hiring fresh graduates for our Digital Transformation business unit. You will be trained in cutting-edge tech and placed on live customer projects.',
-        type: 'Full-time',
-        category: 'Software Development',
-        companyId: techMahindra._id,
-        recruiterId: recruiter1._id,
-        location: 'Noida / Pune, India',
-        workMode: 'Hybrid',
-        salary: '4.5 - 7.5 LPA',
-        experience: 'Fresher (2024 / 2025 Passouts)',
-        skills: ['C++', 'Java', 'Python', 'Data Structures', 'Algorithms', 'SQL'],
-        eligibility: 'B.Tech/MCA 2024 or 2025 graduates with 65%+ across 10th, 12th, and Degree.',
-        responsibilities: [
-          'Write high-quality software code following enterprise coding guidelines.',
-          'Analyze software requirements and participate in technical design discussions.',
-          'Troubleshoot and resolve production defects.',
-          'Collaborate across cross-functional teams in an agile environment.',
-        ],
-        requirements: [
-          'Strong foundation in Data Structures, Algorithms, and Operating Systems.',
-          'Proficiency in at least one object-oriented programming language.',
-          'Excellent problem-solving and logical reasoning abilities.',
-        ],
-        deadline: thirtyDaysFromNow,
-        status: 'Active',
-      },
-      {
-        title: 'Associate Frontend Developer',
-        description:
-          'Develop high-performance customer-facing web applications. We value clean code, accessible UI components, and fast-loading web applications.',
-        type: 'Full-time',
-        category: 'Web Development',
-        companyId: infosys._id,
-        recruiterId: recruiter2._id,
-        location: 'Bengaluru, Karnataka',
-        workMode: 'Hybrid',
-        salary: '6.0 - 9.5 LPA',
-        experience: '0-1 Year',
-        skills: ['React.js', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Redux Toolkit', 'Jest'],
-        eligibility: 'Graduates with bachelor’s degree in Computer Science, IT or related fields.',
-        responsibilities: [
-          'Architect and implement scalable frontend components in Next.js/React.',
-          'Optimize web performance, Core Web Vitals, and SEO metrics.',
-          'Write comprehensive automated tests with Jest and React Testing Library.',
-        ],
-        requirements: [
-          'Solid expertise in modern JavaScript (ES6+), TypeScript, and React ecosystem.',
-          'Experience working with REST and GraphQL APIs.',
-          'Familiarity with CI/CD and deployment workflows.',
-        ],
-        deadline: thirtyDaysFromNow,
-        status: 'Active',
-      },
-      {
-        title: 'Backend Developer (Node.js & Cloud)',
-        description:
-          'Build scalable microservices and APIs powering critical enterprise platforms. Work with Docker, Kubernetes, AWS, and MongoDB.',
-        type: 'Full-time',
-        category: 'Cloud & DevOps',
-        companyId: accenture._id,
-        recruiterId: recruiter1._id,
-        location: 'Remote / All India',
-        workMode: 'Remote',
-        salary: '7.5 - 12 LPA',
-        experience: '0-2 Years',
-        skills: ['Node.js', 'Express', 'MongoDB', 'AWS', 'Docker', 'Redis', 'Kafka'],
-        eligibility: 'B.Tech/MCA degree with strong grasp of distributed systems.',
-        responsibilities: [
-          'Design and maintain robust REST APIs and event-driven microservices.',
-          'Optimize database queries, caching strategies, and server memory footprints.',
-          'Implement authentication and authorization protocols (OAuth2, JWT).',
-        ],
-        requirements: [
-          'Strong practical experience with Node.js and Express framework.',
-          'Proficiency with MongoDB / PostgreSQL and Redis caching.',
-          'Understanding of cloud services (AWS/GCP) and containerization with Docker.',
+          'Implement protocol testing and automated deployment for 5G network functions.',
+          'Debug network signaling logs and optimize throughput.',
         ],
         deadline: fortyFiveDaysFromNow,
         status: 'Active',
@@ -396,95 +726,75 @@ const seedDatabase = async () => {
     ];
 
     const jobs = await Job.insertMany(jobsData);
-    console.log(`💼 Created ${jobs.length} Opportunities.`);
+    console.log(`💼 Created ${jobs.length} Verified Job & Internship Opportunities.`);
 
-    // 4. Create Sample Applications
+    // 4. Create Sample Applications for student1
     const app1 = await Application.create({
+      jobId: jobs[0]._id, // Google Software Engineering Intern
       studentId: student1._id,
-      jobId: jobs[0]._id, // React intern
-      resume: student1.resume,
       coverLetter:
-        'I have been developing React applications for the last 2 years and have built several responsive client portals. I am eager to contribute to Infosys engineering projects.',
-      studentName: student1.name,
-      studentEmail: student1.email,
-      studentPhone: student1.phone,
+        'I am deeply passionate about building scalable distributed systems and would love the opportunity to intern with Google’s core engineering team.',
+      resume: student1.resume,
       status: 'Shortlisted',
-      appliedAt: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000),
+      timeline: [
+        { status: 'Applied', notes: 'Application submitted successfully', date: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000) },
+        { status: 'Under Review', notes: 'Resume reviewed by technical recruiter', date: new Date(Date.now() - 3 * 24 * 60 * 60 * 1000) },
+        { status: 'Shortlisted', notes: 'Shortlisted for technical interviews', date: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000) },
+      ],
     });
 
     const app2 = await Application.create({
+      jobId: jobs[4]._id, // Amazon AWS SDE Intern
       studentId: student1._id,
-      jobId: jobs[1]._id, // Full stack MERN intern
+      coverLetter:
+        'I have hands-on experience building backend microservices with Java and AWS, and I am eager to contribute to AWS cloud products.',
       resume: student1.resume,
-      coverLetter:
-        'As a passionate MERN stack enthusiast with full-stack projects on GitHub, I am excited about the opportunity to build cloud-native applications at TCS.',
-      studentName: student1.name,
-      studentEmail: student1.email,
-      studentPhone: student1.phone,
-      status: 'Under Review',
-      appliedAt: new Date(Date.now() - 1 * 24 * 60 * 60 * 1000),
+      status: 'Applied',
+      timeline: [
+        { status: 'Applied', notes: 'Application submitted successfully', date: new Date(Date.now() - 2 * 24 * 60 * 60 * 1000) },
+      ],
     });
 
-    const app3 = await Application.create({
-      studentId: student2._id,
-      jobId: jobs[2]._id, // Python intern
-      resume: student2.resume,
-      coverLetter:
-        'My expertise in Python and data pipelines aligns directly with Wipro’s automation engineering needs. Looking forward to discussing how I can add value.',
-      studentName: student2.name,
-      studentEmail: student2.email,
-      studentPhone: student2.phone,
-      status: 'Interview',
-      appliedAt: new Date(Date.now() - 5 * 24 * 60 * 60 * 1000),
-    });
+    console.log('📝 Created Sample Applications for students.');
 
-    console.log('📝 Created 3 Sample Applications.');
-
-    // 5. Create Sample Saved Jobs
+    // 5. Bookmark sample jobs for student1
     await SavedJob.create({
       studentId: student1._id,
-      jobId: jobs[4]._id, // UI/UX
+      jobId: jobs[1]._id,
     });
     await SavedJob.create({
       studentId: student1._id,
-      jobId: jobs[7]._id, // Backend Developer
+      jobId: jobs[2]._id,
     });
-    console.log('⭐ Created Sample Saved Jobs.');
+    console.log('⭐ Created Sample Bookmarks for student.');
 
-    // 6. Create Sample Notifications
+    // 6. Create Notifications
     await Notification.create({
       userId: student1._id,
-      message: '🎉 Congratulations! Your application for "React.js Frontend Developer Intern" at Infosys has been shortlisted!',
-      type: 'status_update',
-      isRead: false,
-      link: '/student/applications',
-    });
-    await Notification.create({
-      userId: student1._id,
-      message: 'Your application for "Full Stack Developer Intern (MERN)" at TCS is currently Under Review.',
-      type: 'status_update',
-      isRead: true,
-      link: '/student/applications',
-    });
-    await Notification.create({
-      userId: recruiter1._id,
-      message: 'New applicant Aarav Patel applied for "React.js Frontend Developer Intern".',
+      message: 'Congratulations! Your application for Software Engineering Intern at Google India has been shortlisted for technical interviews.',
       type: 'application',
-      isRead: false,
-      link: `/recruiter/jobs/${jobs[0]._id}/applications`,
+      link: '/student/applications',
     });
 
-    console.log('🔔 Created Sample Notifications.');
-    console.log('====================================================');
-    console.log('🎉 SEEDING COMPLETED SUCCESSFULLY!');
-    console.log('====================================================');
-    console.log('Demo Login Credentials:');
-    console.log('1. Student:   student@demo.com   / password123');
-    console.log('2. Recruiter: recruiter@demo.com / password123');
-    console.log('3. Admin:     admin@demo.com     / admin123');
-    console.log('====================================================');
+    await Notification.create({
+      userId: student1._id,
+      message: 'Microsoft India just posted a new Software Development Engineer (SDE) Intern opportunity matching your skills!',
+      type: 'recommendation',
+      link: `/jobs/${jobs[2]._id}`,
+    });
 
-    await mongoose.disconnect();
+    console.log('🔔 Created Initial Notifications.');
+    console.log('\n=========================================');
+    console.log('✅ DATABASE SEEDING COMPLETED SUCCESSFULLY!');
+    console.log('=========================================');
+    console.log('🔑 Demo Login Credentials:');
+    console.log('   👨‍🎓 Student 1: student@demo.com / password123');
+    console.log('   👩‍🎓 Student 2: student2@demo.com / password123');
+    console.log('   💼 Recruiter 1: recruiter@demo.com / password123');
+    console.log('   💼 Recruiter 2: recruiter2@demo.com / password123');
+    console.log('   🛡️ Admin: admin@demo.com / admin123');
+    console.log('=========================================\n');
+
     process.exit(0);
   } catch (error) {
     console.error('❌ Seeding Error:', error);

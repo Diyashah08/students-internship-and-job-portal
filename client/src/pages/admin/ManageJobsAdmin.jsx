@@ -78,29 +78,29 @@ const ManageJobsAdmin = () => {
     <div className="space-y-8">
       {/* Header */}
       <div>
-        <h1 className="text-2xl font-extrabold text-slate-900">Job & Internship Moderation</h1>
-        <p className="text-xs text-slate-500 mt-1">
+        <h1 className="text-2xl font-extrabold text-slate-900 dark:text-white">Job & Internship Moderation</h1>
+        <p className="text-xs text-slate-500 dark:text-slate-400 mt-1">
           Review, approve, or remove listings submitted by employer recruiters.
         </p>
       </div>
 
       {msg && (
-        <div className="p-4 bg-emerald-50 border border-emerald-200 rounded-2xl text-xs text-emerald-700 flex items-center gap-2">
+        <div className="p-4 bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200 dark:border-emerald-900/60 rounded-2xl text-xs text-emerald-700 dark:text-emerald-300 flex items-center gap-2">
           <CheckCircle2 className="w-4 h-4" />
           <span>{msg}</span>
         </div>
       )}
 
       {/* Filter Tabs */}
-      <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
+      <div className="flex items-center gap-2 border-b border-slate-200 dark:border-slate-800 pb-2 overflow-x-auto">
         {['all', 'Active', 'Closed', 'Pending', 'Rejected'].map((st) => (
           <button
             key={st}
             onClick={() => setStatusFilter(st)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold capitalize transition ${
+            className={`px-3.5 py-1.5 rounded-xl text-xs font-bold capitalize transition cursor-pointer whitespace-nowrap ${
               statusFilter === st
                 ? 'bg-blue-600 text-white shadow-sm'
-                : 'text-slate-600 hover:bg-slate-100'
+                : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
             }`}
           >
             {st === 'all' ? 'All Postings' : st}
@@ -113,10 +113,10 @@ const ManageJobsAdmin = () => {
       ) : jobs.length === 0 ? (
         <EmptyState title="No opportunities in this category" />
       ) : (
-        <div className="bg-white rounded-3xl border border-slate-100 shadow-card overflow-hidden">
+        <div className="bg-white dark:bg-slate-900 rounded-3xl border border-slate-100 dark:border-slate-800 shadow-card overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="text-[11px] uppercase font-bold text-slate-400 bg-slate-50/80 border-b border-slate-100">
+              <thead className="text-[11px] uppercase font-bold text-slate-400 dark:text-slate-400 bg-slate-50/80 dark:bg-slate-800/80 border-b border-slate-100 dark:border-slate-800">
                 <tr>
                   <th className="py-3.5 px-6">Opportunity</th>
                   <th className="py-3.5 px-4">Employer / Company</th>
@@ -126,22 +126,22 @@ const ManageJobsAdmin = () => {
                   <th className="py-3.5 px-6 text-right">Moderation</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                 {jobs.map((j) => (
-                  <tr key={j._id} className="hover:bg-slate-50/60 transition">
-                    <td className="py-4 px-6 font-bold text-slate-900">
-                      <Link to={`/jobs/${j._id}`} className="hover:text-blue-600">
+                  <tr key={j._id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/50 transition">
+                    <td className="py-4 px-6 font-bold text-slate-900 dark:text-white">
+                      <Link to={`/jobs/${j._id}`} className="hover:text-blue-600 dark:hover:text-blue-400">
                         {j.title}
                       </Link>
                       <span className="block text-[11px] text-slate-400 font-normal">{j.location}</span>
                     </td>
-                    <td className="py-4 px-4 text-slate-600 font-medium">
+                    <td className="py-4 px-4 text-slate-600 dark:text-slate-300 font-medium">
                       {j.companyId?.companyName || 'Company'}
                     </td>
                     <td className="py-4 px-4">
-                      <span className="font-semibold text-slate-700">{j.type}</span>
+                      <span className="font-semibold text-slate-700 dark:text-slate-300">{j.type}</span>
                     </td>
-                    <td className="py-4 px-4 text-slate-500">{formatDate(j.deadline)}</td>
+                    <td className="py-4 px-4 text-slate-500 dark:text-slate-400">{formatDate(j.deadline)}</td>
                     <td className="py-4 px-4">
                       <StatusBadge status={j.status} size="sm" />
                     </td>
@@ -150,7 +150,7 @@ const ManageJobsAdmin = () => {
                         {j.status !== 'Active' && (
                           <button
                             onClick={() => handleUpdateStatus(j._id, 'Active')}
-                            className="px-2.5 py-1 bg-emerald-50 text-emerald-700 rounded-lg text-xs font-bold hover:bg-emerald-600 hover:text-white transition"
+                            className="px-2.5 py-1 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 rounded-lg text-xs font-bold hover:bg-emerald-600 dark:hover:bg-emerald-600 hover:text-white transition cursor-pointer"
                             title="Approve / Activate"
                           >
                             Approve
@@ -159,7 +159,7 @@ const ManageJobsAdmin = () => {
                         {j.status === 'Active' && (
                           <button
                             onClick={() => handleUpdateStatus(j._id, 'Closed')}
-                            className="px-2.5 py-1 bg-slate-100 text-slate-700 rounded-lg text-xs font-bold hover:bg-slate-200 transition"
+                            className="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold hover:bg-slate-200 dark:hover:bg-slate-700 transition cursor-pointer"
                             title="Close"
                           >
                             Close
@@ -167,7 +167,7 @@ const ManageJobsAdmin = () => {
                         )}
                         <button
                           onClick={() => handleDelete(j._id)}
-                          className="p-1 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition"
+                          className="p-1 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition cursor-pointer"
                           title="Delete Listing"
                         >
                           <Trash2 className="w-4 h-4" />

@@ -16,8 +16,9 @@ export const applicationService = {
     return response.data;
   },
 
-  updateStatus: async (applicationId, status) => {
-    const response = await api.put(`/applications/${applicationId}/status`, { status });
+  updateStatus: async (applicationId, statusOrData) => {
+    const payload = typeof statusOrData === 'string' ? { status: statusOrData } : statusOrData;
+    const response = await api.put(`/applications/${applicationId}/status`, payload);
     return response.data;
   },
 

@@ -25,7 +25,7 @@ const NotificationDropdown = () => {
       {/* Bell Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="relative p-2.5 rounded-xl text-slate-600 hover:text-blue-600 hover:bg-slate-100 transition"
+        className="relative p-2.5 rounded-xl text-slate-600 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
         aria-label="Notifications"
       >
         <Bell className="w-5 h-5" />
@@ -38,12 +38,12 @@ const NotificationDropdown = () => {
 
       {/* Popover */}
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white rounded-2xl shadow-xl border border-slate-100 py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
-          <div className="flex items-center justify-between px-4 pb-3 border-b border-slate-100">
+        <div className="absolute right-0 mt-2 w-80 sm:w-96 bg-white dark:bg-slate-900 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-800 py-3 z-50 animate-in fade-in slide-in-from-top-2 duration-200">
+          <div className="flex items-center justify-between px-4 pb-3 border-b border-slate-100 dark:border-slate-800">
             <div className="flex items-center gap-2">
-              <h4 className="font-bold text-slate-800 text-sm">Notifications</h4>
+              <h4 className="font-bold text-slate-800 dark:text-slate-100 text-sm">Notifications</h4>
               {unreadCount > 0 && (
-                <span className="text-xs bg-blue-100 text-blue-700 font-semibold px-2 py-0.5 rounded-full">
+                <span className="text-xs bg-blue-100 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 font-semibold px-2 py-0.5 rounded-full">
                   {unreadCount} new
                 </span>
               )}
@@ -51,7 +51,7 @@ const NotificationDropdown = () => {
             {unreadCount > 0 && (
               <button
                 onClick={markAllAsRead}
-                className="text-xs text-blue-600 hover:text-blue-700 font-medium flex items-center gap-1"
+                className="text-xs text-blue-600 dark:text-blue-400 hover:underline font-medium flex items-center gap-1"
               >
                 <CheckCheck className="w-3.5 h-3.5" />
                 Mark all read
@@ -59,31 +59,31 @@ const NotificationDropdown = () => {
             )}
           </div>
 
-          <div className="max-h-80 overflow-y-auto divide-y divide-slate-50">
+          <div className="max-h-80 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800">
             {notifications.length === 0 ? (
-              <div className="py-8 text-center text-slate-400 text-xs">
+              <div className="py-8 text-center text-slate-400 dark:text-slate-500 text-xs">
                 No notifications right now
               </div>
             ) : (
               notifications.slice(0, 10).map((n) => (
                 <div
                   key={n._id}
-                  className={`p-3.5 hover:bg-slate-50 transition flex items-start justify-between gap-3 ${
-                    !n.isRead ? 'bg-blue-50/40' : ''
+                  className={`p-3.5 hover:bg-slate-50 dark:hover:bg-slate-800/60 transition flex items-start justify-between gap-3 ${
+                    !n.isRead ? 'bg-blue-50/50 dark:bg-blue-950/30' : ''
                   }`}
                   onClick={() => !n.isRead && markAsRead(n._id)}
                 >
                   <div className="flex-1">
-                    <p className={`text-xs text-slate-800 leading-relaxed ${!n.isRead ? 'font-semibold' : ''}`}>
+                    <p className={`text-xs text-slate-800 dark:text-slate-200 leading-relaxed ${!n.isRead ? 'font-semibold' : ''}`}>
                       {n.message}
                     </p>
                     <div className="flex items-center gap-2 mt-1.5">
-                      <span className="text-[10px] text-slate-400">{timeAgo(n.createdAt)}</span>
+                      <span className="text-[10px] text-slate-400 dark:text-slate-500">{timeAgo(n.createdAt)}</span>
                       {n.link && (
                         <Link
                           to={n.link}
                           onClick={() => setIsOpen(false)}
-                          className="text-[10px] text-blue-600 hover:underline flex items-center gap-0.5 font-medium"
+                          className="text-[10px] text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-0.5 font-medium"
                         >
                           View <ExternalLink className="w-2.5 h-2.5" />
                         </Link>
@@ -91,7 +91,7 @@ const NotificationDropdown = () => {
                     </div>
                   </div>
                   {!n.isRead && (
-                    <span className="w-2 h-2 rounded-full bg-blue-600 mt-1 flex-shrink-0"></span>
+                    <span className="w-2 h-2 rounded-full bg-blue-600 dark:bg-blue-400 mt-1 shrink-0"></span>
                   )}
                 </div>
               ))

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="fkBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2874f0" />
+      <stop offset="100%" stop-color="#0b54c8" />
+    </linearGradient>
+    <linearGradient id="fkYellow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe11b" />
+      <stop offset="100%" stop-color="#ffd200" />
+    </linearGradient>
+  </defs>
+  <!-- Background Card -->
+  <rect width="200" height="200" rx="36" fill="url(#fkBlue)"/>
+  
+  <!-- Flipkart Bag / Emblem -->
+  <g transform="translate(30, 22)">
+    <!-- Bag Handle -->
+    <path d="M52 46 C52 28 88 28 88 46" fill="none" stroke="url(#fkYellow)" stroke-width="8" stroke-linecap="round"/>
+    
+    <!-- Bag Body -->
+    <path d="M34 50 L106 50 L114 126 C114 130 110 134 105 134 L35 134 C30 134 26 130 26 126 Z" fill="url(#fkYellow)"/>
+    
+    <!-- Italic 'f' Cutout on Bag -->
+    <path d="M82 64 C77 64 71 67 71 73 L71 79 L83 79 L81 89 L71 89 L71 122 L59 122 L59 89 L51 89 L51 79 L59 79 L59 72 C59 60 67 54 80 54 C84 54 87 55 89 56 L86 65 C85 64 83 64 82 64 Z" fill="#2874f0"/>
+    
+    <!-- Speed Lines on top-left of bag -->
+    <line x1="12" y1="62" x2="28" y2="62" stroke="#ffe11b" stroke-width="5" stroke-linecap="round"/>
+    <line x1="16" y1="74" x2="28" y2="74" stroke="#ffe11b" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Text Label -->
+  <text x="100" y="174" text-anchor="middle" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-weight="900" font-size="22" letter-spacing="0.5">Flipkart</text>
+</svg>

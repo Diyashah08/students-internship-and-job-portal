@@ -113,28 +113,28 @@ const RecruiterDashboard = () => {
       </div>
 
       {/* Recent Applications Feed */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-card">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 shadow-card">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Recent Candidate Applications</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Latest student submissions for your jobs</p>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Recent Candidate Applications</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Latest student submissions for your jobs</p>
           </div>
           <Link
             to="/recruiter/manage-jobs"
-            className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1"
+            className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 flex items-center gap-1"
           >
             Manage All Listings <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
         {recentApplications.length === 0 ? (
-          <div className="text-center py-8 text-slate-400 text-xs">
+          <div className="text-center py-8 text-slate-400 dark:text-slate-500 text-xs">
             No applicants received yet for your active listings.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
-              <thead className="text-[11px] uppercase font-bold text-slate-400 bg-slate-50 border-y border-slate-100">
+              <thead className="text-[11px] uppercase font-bold text-slate-400 dark:text-slate-400 bg-slate-50 dark:bg-slate-800 border-y border-slate-100 dark:border-slate-800">
                 <tr>
                   <th className="py-3 px-4">Student</th>
                   <th className="py-3 px-4">College & Degree</th>
@@ -144,30 +144,30 @@ const RecruiterDashboard = () => {
                   <th className="py-3 px-4 text-right">Review</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100">
+              <tbody className="divide-y divide-slate-100 dark:divide-slate-800">
                 {recentApplications.map((app) => (
-                  <tr key={app._id} className="hover:bg-slate-50/60 transition">
-                    <td className="py-3.5 px-4 font-semibold text-slate-900">
+                  <tr key={app._id} className="hover:bg-slate-50/60 dark:hover:bg-slate-800/50 transition">
+                    <td className="py-3.5 px-4 font-semibold text-slate-900 dark:text-white">
                       <div>{app.studentId?.name || app.studentName || 'Student'}</div>
                       <div className="text-[11px] text-slate-400 font-normal">
                         {app.studentId?.email || app.studentEmail}
                       </div>
                     </td>
-                    <td className="py-3.5 px-4 text-slate-600">
+                    <td className="py-3.5 px-4 text-slate-600 dark:text-slate-300">
                       <div>{app.studentId?.college || 'College'}</div>
                       <div className="text-[11px] text-slate-400">{app.studentId?.course || 'Degree'}</div>
                     </td>
-                    <td className="py-3.5 px-4 font-medium text-slate-800">
+                    <td className="py-3.5 px-4 font-medium text-slate-800 dark:text-slate-200">
                       {app.jobId?.title || 'Job'}
                     </td>
-                    <td className="py-3.5 px-4 text-slate-500">{formatDate(app.appliedAt)}</td>
+                    <td className="py-3.5 px-4 text-slate-500 dark:text-slate-400">{formatDate(app.appliedAt)}</td>
                     <td className="py-3.5 px-4">
                       <StatusBadge status={app.status} size="sm" />
                     </td>
                     <td className="py-3.5 px-4 text-right">
                       <Link
                         to={`/recruiter/jobs/${app.jobId?._id}/applications`}
-                        className="inline-flex items-center gap-1 text-blue-600 hover:underline font-bold"
+                        className="inline-flex items-center gap-1 text-blue-600 dark:text-blue-400 hover:underline font-bold"
                       >
                         <Eye className="w-3.5 h-3.5" />
                         Manage
@@ -182,15 +182,15 @@ const RecruiterDashboard = () => {
       </div>
 
       {/* Posted Listings Summary */}
-      <div className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-100 shadow-card">
+      <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-100 dark:border-slate-800 shadow-card">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h2 className="text-lg font-bold text-slate-900">Active Job Postings</h2>
-            <p className="text-xs text-slate-500 mt-0.5">Your most recent open opportunities</p>
+            <h2 className="text-lg font-bold text-slate-900 dark:text-white">Active Job Postings</h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Your most recent open opportunities</p>
           </div>
           <Link
             to="/recruiter/manage-jobs"
-            className="text-xs font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1"
+            className="text-xs font-bold text-blue-600 dark:text-blue-400 hover:text-blue-700 flex items-center gap-1"
           >
             View All <ArrowRight className="w-3.5 h-3.5" />
           </Link>
@@ -200,12 +200,12 @@ const RecruiterDashboard = () => {
           {recentJobs.slice(0, 4).map((job) => (
             <div
               key={job._id}
-              className="p-4 rounded-2xl border border-slate-100 bg-slate-50/50 flex items-center justify-between hover:bg-slate-50 transition"
+              className="p-4 rounded-2xl border border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50 flex items-center justify-between hover:bg-slate-50 dark:hover:bg-slate-800 transition"
             >
               <div>
-                <h4 className="text-sm font-bold text-slate-900">{job.title}</h4>
-                <div className="flex items-center gap-2 text-xs text-slate-500 mt-1">
-                  <span className="font-semibold text-blue-600">{job.type}</span>
+                <h4 className="text-sm font-bold text-slate-900 dark:text-white">{job.title}</h4>
+                <div className="flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400 mt-1">
+                  <span className="font-semibold text-blue-600 dark:text-blue-400">{job.type}</span>
                   <span>•</span>
                   <span>{job.workMode}</span>
                   <span>•</span>
@@ -216,7 +216,7 @@ const RecruiterDashboard = () => {
                 <StatusBadge status={job.status} size="sm" />
                 <Link
                   to={`/recruiter/jobs/${job._id}/applications`}
-                  className="px-3 py-1.5 bg-blue-600 text-white rounded-xl text-xs font-semibold hover:bg-blue-700 transition"
+                  className="px-3 py-1.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl text-xs font-semibold transition"
                 >
                   Applicants
                 </Link>

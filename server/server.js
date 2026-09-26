@@ -1,7 +1,11 @@
+const path = require('path');
 require('dotenv').config();
+require('dotenv').config({ path: path.join(__dirname, '.env') });
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const connectDB = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
@@ -21,6 +25,33 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
+// Security Headers with Helmet
+app.use(
+  helmet({
+    contentSecurityPolicy: false, // allow local cross-origin assets for dev
+    crossOriginResourcePolicy: { policy: 'cross-origin' },
+  })
+);
+
+// General Rate Limiter (200 requests per 15 minutes)
+const apiLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 300,
+  message: { success: false, message: 'Too many requests from this IP, please try again after 15 minutes.' },
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use('/api', apiLimiter);
+
+// Strict Auth Rate Limiter (brute-force protection: 25 attempts per 15 minutes)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 25,
+  message: { success: false, message: 'Too many authentication attempts, please try again in 15 minutes.' },
+});
+app.use('/api/auth/login', authLimiter);
+app.use('/api/auth/register', authLimiter);
+
 // Middleware
 app.use(
   cors({
@@ -31,8 +62,9 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Serve uploaded files statically
+// Serve uploaded files and logos statically
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
+app.use('/logos', express.static(path.join(__dirname, 'public/logos')));
 
 // Health Check API
 app.get('/api/health', (req, res) => {
